@@ -35,6 +35,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
 	private final int ROTATE_ANIM_DURATION = 180;
 
 	public int mMeasuredHeight;
+    private final Handler mHandler = new Handler();
 
 	public ArrowRefreshHeader(Context context) {
 		super(context);
@@ -156,11 +157,18 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
 
     @Override
 	public void refreshComplate(){
-        mHeaderTimeView.setText(friendlyTime(new Date()));
+//        mHeaderTimeView.setText(friendlyTime(new Date()));
         setState(STATE_DONE);
         new Handler().postDelayed(new Runnable(){
             public void run() {
-                reset();
+//                reset();
+                smoothScrollTo(0);
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                       setState(STATE_NORMAL);
+                    }
+                },400);
             }
         }, 500);
 	}

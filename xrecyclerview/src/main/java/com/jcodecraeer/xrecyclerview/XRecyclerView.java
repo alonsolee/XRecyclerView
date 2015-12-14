@@ -205,8 +205,6 @@ public class XRecyclerView extends RecyclerView {
                 if ( isOnTop() && pullRefreshEnabled) {
                     mRefreshHeader.onMove(deltaY / DRAG_RATE);
                     if(mRefreshHeader.getVisiableHeight() > 0 && mRefreshHeader.getState() < ArrowRefreshHeader.STATE_REFRESHING ) {
-                        Log.i("getVisiableHeight", "getVisiableHeight = " + mRefreshHeader.getVisiableHeight());
-                        Log.i("getVisiableHeight", " mRefreshHeader.getState() = " +  mRefreshHeader.getState());
                         return false;
                     }
                 }
